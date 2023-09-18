@@ -19,14 +19,13 @@ const port = process.env.PORT || 3000;
 
 // OPEN AI initializiation...
 
-
 const openai = new OpenAI({
-    apiKey: OPENAI_API
+    apiKey: process.env.OPENAI_API || OPENAI_API
 });
 
 // mongodb initialization...
 
-const client = new MongoClient(MONGODB_URI);
+const client = new MongoClient(process.env.OPENAI_API || MONGODB_URI);
   
  await client.connect().then(()=>{
     client.db('socialapp').command({ ping: 1 });
