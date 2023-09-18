@@ -5,27 +5,28 @@ import path from 'path';
 import stories from './routes/story.mjs';
 import { MongoClient} from "mongodb";
 import OpenAI from "openai";
-import { config } from 'dotenv';
 
 
+// Env Variables..
+
+const OPENAI_API = '';
+const MONGODB_URI = '';
 
 //  server initialization...
 
 const app  = express();
 const port = process.env.PORT || 3000;
-config();
 
 // OPEN AI initializiation...
 
+
 const openai = new OpenAI({
-    apiKey: process.env.OPEN_AI_API
+    apiKey: OPENAI_API
 });
 
 // mongodb initialization...
 
-const URI = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.f0kvwnv.mongodb.net/?retryWrites=true&w=majority`;
-
-const client = new MongoClient(URI);
+const client = new MongoClient(MONGODB_URI);
   
  await client.connect().then(()=>{
     client.db('socialapp').command({ ping: 1 });

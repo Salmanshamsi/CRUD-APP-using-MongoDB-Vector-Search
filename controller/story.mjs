@@ -39,7 +39,7 @@ const getData = async (req, res) => {
     .project({ stories_embedding: 0 })
 
     const allStories = await cursor.toArray();
-    res.send(allStories);
+    res.status(200).send(allStories);
 
   } catch (error) {
     res.status(500).send('Failed to get stories. Please try later.',error);
