@@ -9,8 +9,8 @@ import OpenAI from "openai";
 
 // Env Variables..
 
-const OPENAI_API = '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';
-const MONGODB_URI = 'mongodb+srv://shamsisalman81:salman@cluster0.f0kvwnv.mongodb.net/?retryWrites=true&w=majority';
+const OPENAI_API = '';
+const MONGODB_URI = '';
 
 //  server initialization...
 
