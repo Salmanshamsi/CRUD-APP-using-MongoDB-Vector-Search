@@ -1,4 +1,4 @@
-import {DB_Collection ,openai} from "../server.mjs";
+import {DB_Collection ,openai} from "../app.js";
 import { ObjectId } from "mongodb";
 
 

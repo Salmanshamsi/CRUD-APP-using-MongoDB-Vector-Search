@@ -2,11 +2,12 @@
   "name": "crud-app-using-mongodb-vector-search",
   "version": "1.0.0",
   "description": "",
-  "main": "server.mjs",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.mjs",
-    "dev": "nodemon server.mjs"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",

@@ -6,7 +6,6 @@ import stories from './routes/story.mjs';
 import { MongoClient} from "mongodb";
 import OpenAI from "openai";
 
-
 // Env Variables..
 
 const OPENAI_API = '';
