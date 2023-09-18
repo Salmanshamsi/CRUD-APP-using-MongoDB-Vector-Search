@@ -9,8 +9,8 @@ import OpenAI from "openai";
 
 // Env Variables..
 
-const OPENAI_API = '';
-const MONGODB_URI = '';
+const OPENAI_API = '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';
+const MONGODB_URI = 'mongodb+srv://shamsisalman81:salman@cluster0.f0kvwnv.mongodb.net/?retryWrites=true&w=majority';
 
 //  server initialization...
 
@@ -25,7 +25,7 @@ const openai = new OpenAI({
 
 // mongodb initialization...
 
-const client = new MongoClient(process.env.OPENAI_API || MONGODB_URI);
+const client = new MongoClient(process.env.URI || MONGODB_URI);
   
  await client.connect().then(()=>{
     client.db('socialapp').command({ ping: 1 });
