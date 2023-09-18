@@ -3,8 +3,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import stories from './routes/story.mjs';
-import { MongoClient,ServerApiVersion} from "mongodb";
+import { MongoClient} from "mongodb";
 import OpenAI from "openai";
+import { config } from 'dotenv';
 
 
 
@@ -12,20 +13,19 @@ import OpenAI from "openai";
 
 const app  = express();
 const port = process.env.PORT || 3000;
+config();
 
 // OPEN AI initializiation...
 
-const openAI_API = "";
-
 const openai = new OpenAI({
-    apiKey: openAI_API
+    apiKey: process.env.OPEN_AI_API
 });
 
 // mongodb initialization...
 
-const uri = "";
+const URI = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.f0kvwnv.mongodb.net/?retryWrites=true&w=majority`;
 
-const client = new MongoClient(uri);
+const client = new MongoClient(URI);
   
  await client.connect().then(()=>{
     client.db('socialapp').command({ ping: 1 });
