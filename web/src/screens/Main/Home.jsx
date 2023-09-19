@@ -27,7 +27,7 @@ const Home = () => {
 
     try {
       setloading("visible");
-      const resp = await axios.get(`/search?q=${query}`);
+      const resp = await axios.get(`/stories/search?q=${query}`);
       console.log(resp.data);
       setData(resp.data);
       setloading("hidden");
