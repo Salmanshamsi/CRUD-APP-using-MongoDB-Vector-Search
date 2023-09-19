@@ -27,7 +27,7 @@ const app  = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(process.cwd + "/public" )));
+app.use(express.static(path.join(process.cwd() + "/public" )));
 
 
 const port = process.env.PORT || 3000;
