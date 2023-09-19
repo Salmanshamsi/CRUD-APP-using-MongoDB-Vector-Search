@@ -27,7 +27,7 @@ const Home = () => {
 
     try {
       setloading("visible");
-      const resp = await axios.get(`https://teal-hummingbird-hose.cyclic.cloud/search?q=${query}`);
+      const resp = await axios.get(`/search?q=${query}`);
       console.log(resp.data);
       setData(resp.data);
       setloading("hidden");
@@ -45,7 +45,7 @@ const Home = () => {
     let response = null;
     try {
             setloading("visible");
-             response = await axios.get(`https://teal-hummingbird-hose.cyclic.cloud/stories/`);
+             response = await axios.get(`/stories/`);
             setData(response?.data);
             console.log("run get data");
             setloading("hidden");
@@ -62,7 +62,7 @@ const Home = () => {
 
     try {
         setloading("visible");
-        const response = await axios.delete(`https://teal-hummingbird-hose.cyclic.cloud/stories/${id}`);
+        const response = await axios.delete(`/stories/${id}`);
         console.log(response?.data);
         getData();
         setloading("hidden")
@@ -79,7 +79,7 @@ const Home = () => {
     try{
       setloading("visible");
         const data = {title,content};
-        const resp = await axios.post(`https://teal-hummingbird-hose.cyclic.cloud/stories/`,data); 
+        const resp = await axios.post(`/stories/`,data); 
         resp ? console.log("Data added Sucessfully")
         : console.log("Data not added Try Later");
         getData();
@@ -98,7 +98,7 @@ const Home = () => {
     try{
      
         const data = {title,content};
-        const resp = await axios.put(`https://teal-hummingbird-hose.cyclic.cloud/stories/${id}`,data); 
+        const resp = await axios.put(`/stories/${id}`,data); 
         resp ? console.log("Data updated Sucessfully") 
         : console.log("Data not update Try Later");
         getData();
