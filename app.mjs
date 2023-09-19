@@ -5,26 +5,37 @@ import path from 'path';
 import stories from './routes/story.mjs';
 import { MongoClient} from "mongodb";
 import OpenAI from "openai";
+import './config/index.mjs'
 
 // Env Variables..
 
-const OPENAI_API = '';
-const MONGODB_URI = '';
-
-//  server initialization...
-
-const app  = express();
-const port = process.env.PORT || 3000;
+const OPENAI_API = process.env.OPEN_AI_API;
+const MONGODB_URI = `mongodb+srv://shamsisalman81:salman@cluster0.f0kvwnv.mongodb.net/?retryWrites=true&w=majority`;
 
 // OPEN AI initializiation...
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API || OPENAI_API
+    apiKey: OPENAI_API
 });
+
+//  server initialization...
+
+// set middleWares..
+
+const app  = express();
+
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static(path.join(process.cwd + "/public" )));
+
+
+const port = process.env.PORT || 3000;
+
 
 // mongodb initialization...
 
-const client = new MongoClient(process.env.URI || MONGODB_URI);
+const client = new MongoClient(MONGODB_URI);
   
  await client.connect().then(()=>{
     client.db('socialapp').command({ ping: 1 });
@@ -35,11 +46,6 @@ const client = new MongoClient(process.env.URI || MONGODB_URI);
 
 const DB_Collection = client.db('socialapp').collection('stories');
 
-// set middleWares..
-
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.static(path.join(process.cwd + "/public" )));
 
 // REST APIs
 
