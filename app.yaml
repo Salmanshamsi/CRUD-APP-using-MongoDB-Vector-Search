@@ -1,2 +1,4 @@
 runtime: nodejs20
 service: 
+env_variables:
+  OPEN_AI_API: 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
